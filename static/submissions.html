@@ -1,0 +1,60 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>Submissions</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    <nav id="cs3550_nav_bar" class="nav_bar">
+        <div id="nav_row">
+            <div id="banner_and_assignments">  
+                <p id="cs3500_banner">CS 3500</p>
+                <a id="assignment_link" href="index.html">Assignment</a>
+            </div>
+                <a if="profile_link" href="profile.html">Profile</a>
+        </div>
+    </nav>
+
+    <div id="submission_box">
+        <h1 id="page_title">
+            Homework 1 (HTML)
+        </h1>
+        <div class="horizontal_line"></div>
+        <p id="grade_out_of">All grades out of 100</p>
+
+        <form id="submission_form">
+            <table id="Submissions Table">
+                <tr>
+                    <td><strong>Student</strong></td>
+                    <td><strong>Submission</strong></td>
+                    <td><strong>Grade</strong></td>
+                </tr>
+                <tr>
+                    <td>s1</td>
+                    <td><a href="submissions.html">Submission</a></td>
+                    <td>
+                        <input id="student_1_grade" type="number" step="1" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>s2</td>
+                    <td><a href="submissions.html">Submission</a></td>
+                    <td>
+                        <input id="student_2_grade" type="number" step="1" >
+                    </td>
+                </tr>
+            </table><br>
+        </form>
+
+        <div id="submission_footer">
+            <button type="submit" id="grade_submission_button">
+                Submit
+            </button>
+            <a href="index.html">Back to assignment</a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,207 @@
+html{
+    margin: 0%;
+    padding: 0%;
+}
+/*A4 Changes here*/
+output{
+    font-weight: bold;
+    color: red;
+}
+th, td{
+    padding: 0;
+}
+tr {
+    height: 0;
+}
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+}
+code {
+    font-family: 'IBM Plex Mono', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
+}
+body {
+    font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
+    line-height: 1.25em;
+    margin: 0%;
+    padding: 0%;
+}
+table{
+    line-height: 1.5em;
+    width: 100%;
+}
+#login_box,
+#profile_box,
+#index_box,
+#submission_box{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+#profile_box{
+    max-width: 50rem;
+}
+#login_column {
+    display: block;
+}
+#input_field {
+    width: 50%
+}
+#main-container{
+    width: calc(100% - 2rem); 
+    max-width: 50rem; 
+    margin: 0 auto;
+}
+.login_input {
+    width: 100%;
+}
+#username_row,
+#password_row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+#submission_row {
+    display: flex;
+    justify-content: center;
+}
+#login_button {
+    width: 50%;
+}
+#cs3550_nav_bar{
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+nav {
+    font-size: 1.25em;
+    background-color: #ddd;
+}
+nav a {
+    color: #444;
+    font-weight: lighter;
+    text-decoration: underline;
+}
+nav a:hover {
+    text-decoration: none;
+}
+/*A4 Changes here*/
+input:invalid {
+    border : 2px solid red;
+}
+nav p {
+    font-weight: bold;
+}
+#nav_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+#banner_and_assignments{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+#Description h1{
+    font-size: 1em;
+}
+#all_assignment_header,
+#grade_out_of,
+#due_and_grade{
+    margin: 0;
+}
+#due_and_grade{
+    padding-bottom: 2rem;
+}
+#submission_form{
+    padding-top: 1rem;
+}
+#page_title {
+    padding-top: 3rem;
+}
+#cs3500_banner{
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+#ta_card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #b1c3de;
+    border: 2px solid #204a87;
+}
+#file_form_col {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+}
+#row-1 {
+    margin-top : 0;
+}
+/*A4 Changes Here*/
+#student_view_card{
+    display: flex-box;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #b1c3de;
+    border: 2px solid #204a87;
+}
+#submission_card{
+    display: block;
+    padding: 1rem;
+    background-color: #b1c3de;
+    border: 2px solid #204a87;
+}
+#submission_card p{
+    margin: 0;
+}
+#second_col{
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#ta_status_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+#Assignment_Table{
+    padding-top: 1rem;
+}
+.grade_weight{
+    text-align: right;
+}
+.table_info{
+    text-align: left;
+}
+.weight_info{
+    text-align: right;
+}
+.horizontal_line{
+    width: 100%;
+    border-bottom: 1px solid black;
+    margin: 0.5rem 0;
+}
+#user_name {
+    size : 10%;
+}
+.login_error_message {
+    color: red;
+}
+
+th.sort-column { cursor: pointer; }
+
+th.sort-asc::after { content: " \25b2"; }
+
+th.sort-desc::after { content: " \25bc"; }
+
+th.assignment_info {
+    text-align: left;
+}

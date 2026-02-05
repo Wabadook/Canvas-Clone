@@ -1,0 +1,54 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>Login</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    <nav id="cs3550_nav_bar" class="nav_bar">
+        <div id="nav_row">
+            <div id="banner_and_assignments">  
+                <p id="cs3500_banner">CS 3500</p>
+                <a id="assignment_link" href="index.html">Assignment</a>
+            </div>
+                <a if="profile_link" href="profile.html">Profile</a>
+        </div>
+    </nav>
+
+    <main id="main-container">
+        <div id="login_box">
+            <h1 id="page_title">
+                Log in
+            </h1>
+            <div class="horizontal_line"></div>
+
+            <form id="login_form">
+                <div id="login_column">
+                    <div id="username_row">
+                        <label for="username">Username:</label>
+                        <div id="input_field">
+                            <input class="login_input" id="username" name="username" autofocus>
+                        </div>
+                    </div>
+
+                    <div id="password_row"> 
+                        <label for="password">Password:</label>
+                        <div id="input_field">
+                            <input class="login_input" id="password" name="password">
+                        </div>
+                    </div>
+
+                    <div id="submission_row">
+                        <button id="login_button" type="submit">
+                            Log in
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
