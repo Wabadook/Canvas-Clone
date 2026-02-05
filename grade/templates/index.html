@@ -1,0 +1,41 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>Index</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    {% include "header.html" %}
+
+    <main id="main-container">
+        <div id="index_box">
+            <h1 id="page_title">
+                All assignments
+            </h1>
+            <div class="horizontal_line"></div>
+
+            <table id="Submissions_Table" class="sortable">
+                <thead>
+                    <tr>
+                        <th class="table_info"><strong>Assignment</strong></td>
+                        <th class="table_info sort-column"><strong>Due date</strong></td>
+                        <th class="table_weight sort-column"><strong>Weight</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for element in allAssignments %}
+                    <tr>
+                        <td><a href="/{{element.id}}/">{{element.title}}</td>
+                        <td>{{element.deadline}}</td>
+                        <td>{{element.weight}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>

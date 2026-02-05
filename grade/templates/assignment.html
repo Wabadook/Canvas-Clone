@@ -1,0 +1,91 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>"Assignment 1 (HTML) - CS 3550"</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    {% include "header.html" %}
+    
+    <main id="main-container">
+        <div id="assignment_1_box">
+            <h1>
+                <p id="page_title">{{assignmentTitle}}</p>
+            </h1>
+            <div class="horizontal_line"></div>
+            <p id="due_and_grade">{{assignmentDeadline}}, total of 100 points</p>
+            
+            {% if whichUser.0 or whichUser.2 %}
+                <div id="student_view_card" class="action_card">  
+                    {% if alice_submission and alice_submission.file %}
+                        <p id="row-1">Current Submission: <a href="{{ alice_submission.file.url }}" target="_blank">{{ alice_submission.file.name }}</a></p>
+                        <p>{{ status }}</p>
+                    {% else %}
+                        <p id="row-1">No current submission</p>
+                        <p>{{ status }}</p>
+                    {% endif %}
+                    
+                    {% if not isDue %}
+                        <form id="student_view_form" class="async" action="/{{ assignmentId }}/" method="POST" enctype="multipart/form-data" accept="application/pdf">
+                            {% csrf_token %}
+                            {% if fileError != "" %}
+                                <output>{{ fileError }}</output><br>
+                            {% endif %}
+                            <label for="file_input">File Upload: </label>
+                            <div id="file_form_col">
+                                <input id="file_input" name="file_input" type="file">
+                                <button id="file_input_btn" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    {% endif %}
+
+                </div><br>
+            {% endif %}
+
+            {% if whichUser.1 or whichUser.3 %}
+                {% if whichUser.1 %}
+                    <div id="submission_card" class="action_card">
+                        <p>Currently {{allSubmissionsCount}}/{{allStudentsCount}} 
+                            {% if allSubmissionsCount > 1 %}
+                                submissions
+                            {% else %}
+                                submission
+                            {% endif %}
+                        </p>
+
+                        <div id="second_col">
+                            <p>{{allGradedAssignmentsCount}} 
+                                {% if allGradedAssignmentsCount > 1 %}
+                                    submissions assigned to you
+                                {% else %}
+                                    submission assigned to you
+                                {% endif %}
+                            </p>
+                            <a href="/{{assignmentId}}/submissions/">Grade</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div id="submission_card" class="action_card">
+                        <p>Currently {{allSubmissionsCount}} 
+                            {% if allSubmissionsCount > 1 %}
+                                submissions
+                            {% else %}
+                                submission
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+            <h2>Description</h2>
+
+            <div id="queried_description">
+                {{ assignment.description|safe }}
+            </div>
+        </div>
+    </main>
+</body>

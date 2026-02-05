@@ -1,0 +1,74 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>Submissions</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    {% include "header.html" %}
+
+    <div id="submission_box">
+        <h1 id="page_title">
+            {{ assignmentTitle }}
+        </h1>
+        <div class="horizontal_line"></div>
+        <p id="grade_out_of">All grades out of 100</p>
+
+        <form id="submission_form" action="/{{ assignment_id }}/submissions/" method="POST">
+            {% csrf_token %}
+            <table id="Submissions Table">
+                {% if generic_error %}
+                    <output id="generic_errors" class="error">
+                        There was an issue with submission {% for key, value in generic_errors.items %}
+                                                                {% if key ==  element.submission_id %}
+                                                                    <p>{{ key }}</p>  
+                                                                {% endif %}
+                                                        {% endfor %} 
+                        .
+                    </output>
+                {% endif %}
+                <tr>
+                    <td><strong>Student</strong></td>
+                    <td><strong>Submission</strong></td>
+                    <td><strong>Grade</strong></td>
+                </tr>
+                {% for element in studentDataCollection %}
+                    <tr>
+                        <td>{{ element.studentName }}</td>
+                        <td><a id="file_field" href="{{ element.submission.file.url }}" target="_blank">{{ element.submission.file.name }}</a></td>
+                        <td>
+                            <input id="student_grade" 
+                                   name="grade-{{ element.submission_id }}" 
+                                   type="number" 
+                                   value="{{ element.studentScore }}" 
+                                   step="0.01",
+                                   min="0",
+                                   max="{{ assignmentPoints }}">
+                        </td>
+                        <td>
+                            {% for key, value in errors.items %}
+                                {% if key ==  element.submission_id %}
+                                    {% for error in value %}
+                                        <output id="grade_error" class="error"> {{ error }} </output>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table><br>
+
+            <button type="submit" id="grade_submission_button">
+                Submit
+            </button>
+        </form><br>
+
+        <div id="submission_footer">
+            <a href="/{{ assignment_id }}">Back to assignment</a>
+        </div>
+    </div>
+</body>

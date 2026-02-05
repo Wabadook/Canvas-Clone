@@ -1,0 +1,57 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>Login</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    {% include "header.html" %}
+
+    <main id="main-container">
+        <div id="login_box">
+            <h1 id="page_title">
+                Log in
+            </h1>
+            <div class="horizontal_line"></div>
+
+            <form id="login_form" action="/profile/login/" method="POST">
+                {% csrf_token %}
+                <div id="login_column">
+                    <div id="username_row">
+                        <label for="username">Username:</label>
+                        <div id="input_field">
+                            <input class="login_input" id="username" name="username" type="text" autofocus>
+                        </div>
+                    </div>
+
+                    <div id="password_row"> 
+                        <label for="password">Password:</label>
+                        <div id="input_field">
+                            <input class="login_input" id="password" name="password" type="password">
+                        </div>
+                    </div>
+
+                    <div id="error_row">
+                        {% for error_list in generic_errors.values %}
+                            {% for error in error_list %}
+                                <p class="login_error_message"><strong>{{ error }}</strong></p>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    <div id="submission_row">
+                        <button id="login_button" type="submit">
+                            Log in
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>

@@ -1,0 +1,114 @@
+<!doctype html>
+
+<head>
+    <meta charset = "utf8">
+    <title>TA's Profile</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|IBM+Plex+Mono|Audiowide">
+</head>
+
+<body>
+    {% include "header.html" %}
+
+    <main id="main-container">
+        <div id="profile_box">
+            <h1 id="page_title">
+                Your grades
+            </h1>
+            <div class="horizontal_line"></div>
+
+            <div id="ta_card">
+                {% if user.username != "" %}
+                    <p id="ta_status">Currently logged in as {{user.get_full_name}}.</p>
+                    <a href="/profile/logout/">Log out</a>
+                {% else %}
+                    <p id="ta_status">Currently logged out.</p>
+                    <a href="/profile/login/">Log in</a>
+                {% endif %}
+            </div>
+            
+            {% if whichUser.1 %}
+                <table id="Assignment_Table">
+                    <thead>
+                        <tr>
+                            <th class="assignment_info sort-column"><strong>Assignment</strong></td>
+                            <th class="weight_info sort-column"><strong>Graded</strong></td>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for element in assignmentCollection %}
+                            <tr>
+                                <td><a href="/{{ element.assignmentId }}/">{{element.assignmentTitles}}</td>
+                                <td class="grade_weight">{{element.gradedSubmissions}}/{{element.assignedSubmissions}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% elif whichUser.0 %}
+                <table id="Assignment_Table" class="sortable hypothesizable">
+                    <thead>
+                        <tr>
+                            <th class="assignment_info"><strong>Assignment</strong></td>
+                            <th class="weight_info sort-column"><strong>Score</strong></td>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for element in assignmentCollection %}
+                            <tr>
+                                <td><a href="/{{ element.assignmentId }}/">{{element.assignmentTitles}}</td>
+                                <td class="grade_weight" data-weight="{{ element.assignmentWeight }}">{{element.appendingScore}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td class="assignment_info"><strong>Final Grade</strong></td>
+                            <td class="weight_info earned_score"><strong>{{ earnedPercentage }}%</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            {% elif whichUser.2 %}
+                <table id="Assignment_Table">
+                    <thead>
+                        <tr>
+                            <th class="assignment_info"><strong>Assignment</strong></td>
+                            <th class="weight_info"><strong>Graded</strong></td>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for element in assignmentCollection %}
+                            <tr>
+                                <td><a href="/{{ element.assignmentId }}/">{{element.assignmentTitles}}</td>
+                                <td class="grade_weight">N/A</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% elif whichUser.3 %}
+                <table id="Assignment_Table">
+                    <thead>
+                        <tr>
+                            <th class="assignment_info"><strong>Assignment</strong></td>
+                            <th class="weight_info"><strong>Graded</strong></td>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for element in assignmentCollection %}
+                            <tr>
+                                <td><a href="/{{ element.assignmentId }}/">{{element.assignmentTitles}}</td>
+                                <td class="grade_weight">{{element.gradedCount}}/{{element.submissionCount}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </main>
+</body>
+
